@@ -21,7 +21,7 @@
     "start:prod": "webpack serve --open --config webpack.prod.cjs",
     "build": "webpack --config webpack.prod.cjs",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d docs"
   },
   "license": "ISC",
   "devDependencies": {
