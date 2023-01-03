@@ -57,8 +57,12 @@ export const CalcForm: React.FC = (): JSX.Element => {
   const { setCourse } = useContext(NBPContext);
 
   const [
-    { data: startData, isError: isErrorStart, isLoading: isLoadingStart },
-    { data: endData, isError: isErrorEnd, isLoading: isLoadingEnd },
+    {
+      data: startData,
+      isError: isErrorStart,
+      isInitialLoading: isLoadingStart,
+    },
+    { data: endData, isError: isErrorEnd, isInitialLoading: isLoadingEnd },
   ] = useNBPGet(formattedData);
 
   const onSubmit: SubmitHandler<IFormInput> = data => {

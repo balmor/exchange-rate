@@ -1,4 +1,4 @@
-import { useQueries } from 'react-query';
+import { useQueries } from '@tanstack/react-query';
 
 const getExchange = async (date: any, currency: string) => {
   const url = `${process.env.REACT_APP_NBP_EXCHANGE_RATES_URL}/${currency}/${date}`;
@@ -19,8 +19,10 @@ export const useNBPGet = ({
   prevEndBusinessDay,
   currency,
 }: any) => {
-  return useQueries([
-    exchageOptions(prevStartBusinessDay, currency),
-    exchageOptions(prevEndBusinessDay, currency),
-  ]);
+  return useQueries({
+    queries: [
+      exchageOptions(prevStartBusinessDay, currency),
+      exchageOptions(prevEndBusinessDay, currency),
+    ],
+  });
 };

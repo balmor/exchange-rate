@@ -32,7 +32,7 @@ https://balmor.github.io/exchange-rate/
 - [x] dodanie przycisku do wyczyszczenia formularza
 - [x] pobranie kursów NBP zależnie od daty
 - [x] możliwość pobrania wyniku jako dokument pdf
+- [x] aktualizacja react-query v4 (https://tanstack.com/query/v4)
 - [ ] usuniecie useEffect oraz przeniesienie formatted data do NBPContext
-- [ ] aktualizacja react-query v4 (https://tanstack.com/query/v4)
-- [ ] sprawdzić https://pspdfkit.com/blog/2022/how-to-convert-html-to-pdf-using-react/
 - [ ] dodanie responsywnego trybu dla tabletów i smartfonów
+- [ ] sprawdzić https://pspdfkit.com/blog/2022/how-to-convert-html-to-pdf-using-react/

@@ -36,7 +36,7 @@ jobs:
       - name: Set node version
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'yarn'
 
       # Runs a set of commands using the runners shell
@@ -45,6 +45,7 @@ jobs:
           yarn
           yarn build
 
+      # Deploy
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
