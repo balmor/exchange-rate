@@ -21,26 +21,26 @@ const CourseResult = styled('h2')`
 `;
 
 export type ResultProps = {
-  formattedStart: ICalcResultProps;
-  formattedEnd: ICalcResultProps;
+  firstResult: ICalcResultProps;
+  secondResult: ICalcResultProps;
   diffResult: string | undefined;
   currency: string;
 };
 
 export const Result: React.FC<ResultProps> = ({
-  formattedStart,
-  formattedEnd,
+  firstResult,
+  secondResult,
   diffResult,
   currency,
 }): JSX.Element => (
   <Fragment>
     <HeadResult>Wartość w ewidencji przychodów</HeadResult>
-    <CalculationResult {...formattedStart} currency={currency} />
-    <ExchangeTable {...formattedStart} />
+    <CalculationResult {...firstResult} currency={currency} />
+    <ExchangeTable {...firstResult} />
 
     <HeadResult>Faktyczny wpływ</HeadResult>
-    <CalculationResult {...formattedEnd} currency={currency} />
-    <ExchangeTable {...formattedEnd} />
+    <CalculationResult {...secondResult} currency={currency} />
+    <ExchangeTable {...secondResult} />
 
     <CourseResult>Róznica kursowa: {diffResult} PLN</CourseResult>
   </Fragment>

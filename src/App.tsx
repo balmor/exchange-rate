@@ -5,7 +5,7 @@ import { Section } from './components/Section';
 import { darkMuiTheme } from './config/muiTheme';
 import Typography from '@mui/material/Typography';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import NBPProvider from './context/NBPProvider';
+import FormProvider from './context/FormProvider';
 
 const queryClient = new QueryClient();
 
@@ -13,10 +13,10 @@ const App: React.FC = (): JSX.Element => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider theme={darkMuiTheme}>
       <Typography component={'div'}>
-        <NBPProvider>
+        <FormProvider>
           <Header />
           <Section />
-        </NBPProvider>
+        </FormProvider>
       </Typography>
     </ThemeProvider>
   </QueryClientProvider>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import plLocale from 'date-fns/locale/pl';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -22,7 +22,7 @@ import { DateCalcPicker } from '../DateCalcPicker';
 import { ErrorMessage } from '../ErrorMessage';
 import { formatData } from '../../utils';
 import { useNBPGet } from '../../hooks/useNBPGet';
-import { NBPContext } from '../../context/NBPProvider';
+import { FormContext } from '../../context/FormProvider';
 
 export type IFormInput = {
   required?: string;
@@ -38,7 +38,6 @@ const errorMessages: IFormInput = {
 };
 
 export const CalcForm: React.FC = (): JSX.Element => {
-  const [formattedData, setFormattedData] = useState<any>({});
   const {
     control,
     handleSubmit,
@@ -54,43 +53,22 @@ export const CalcForm: React.FC = (): JSX.Element => {
     },
   });
   const themeContext = useTheme();
-  const { setCourse } = useContext(NBPContext);
+  const { formData, setFormData } = useContext(FormContext);
 
   const [
-    {
-      data: startData,
-      isError: isErrorStart,
-      isInitialLoading: isLoadingStart,
-    },
-    { data: endData, isError: isErrorEnd, isInitialLoading: isLoadingEnd },
-  ] = useNBPGet(formattedData);
+    { isInitialLoading: isLoadingStart },
+    { isInitialLoading = isLoadingStart },
+  ] = useNBPGet(formData);
 
   const onSubmit: SubmitHandler<IFormInput> = data => {
     const formattedData = formatData(data);
-    setFormattedData(formattedData);
+    setFormData(formattedData);
   };
-
-  const { amount } = formattedData;
 
   const handleReset = () => {
     reset();
-    setCourse([]);
+    setFormData({});
   };
-
-  useEffect(() => {
-    setCourse([
-      { startData, isErrorStart, formattedData },
-      { endData, isErrorEnd },
-    ]);
-  }, [
-    setCourse,
-    startData,
-    endData,
-    isErrorStart,
-    isErrorEnd,
-    formattedData,
-    amount,
-  ]);
 
   return (
     <Box
@@ -192,8 +170,8 @@ export const CalcForm: React.FC = (): JSX.Element => {
             sx={{ width: 100, marginLeft: 12 }}
             variant='contained'
             type='submit'
-            loading={isLoadingStart || isLoadingEnd}
-            disabled={isLoadingStart || isLoadingEnd}
+            loading={isInitialLoading}
+            disabled={isInitialLoading}
           >
             Oblicz
           </LoadingButton>

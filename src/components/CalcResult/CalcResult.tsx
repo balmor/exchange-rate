@@ -6,11 +6,12 @@ import format from 'date-fns/format';
 import React, { useContext } from 'react';
 import styled, { useTheme } from 'styled-components';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import { NBPContext } from '../../context/NBPProvider';
-import { priceFormat } from '../../utils';
+import { displayFormattedResult, priceFormat } from '../../utils';
 import { Notification } from '../Notification';
 import { Result } from '../Result';
 import { ResultPdf } from '../ResultPdf';
+import { FormContext } from '../../context/FormProvider';
+import { useNBPGet } from '../../hooks/useNBPGet';
 
 const StyledPDFDownloadLink = styled(PDFDownloadLink)`
   text-decoration: none;
@@ -30,15 +31,15 @@ export type ICalcResultProps = {
 export const CalcResult: React.FC = (): JSX.Element => {
   const themeContext = useTheme();
 
-  const { course } = useContext(NBPContext);
+  const {
+    formData,
+    formData: { amount },
+  } = useContext(FormContext);
+
   const [
-    {
-      startData = null,
-      isErrorStart = false,
-      formattedData: { amount = '' } = {},
-    } = {},
-    { endData = null, isErrorEnd = false } = {},
-  ] = course;
+    { data: startData, isError: isErrorStart },
+    { data: endData, isError: isErrorEnd },
+  ] = useNBPGet(formData);
 
   if ((!startData || !endData) && !isErrorStart && !isErrorEnd) {
     return <></>;
@@ -51,53 +52,41 @@ export const CalcResult: React.FC = (): JSX.Element => {
   };
 
   const renderResult = () => {
-    if (startData || endData) {
-      const { code, currency, rates: [firstRate] = [] } = startData;
-      const { rates: [secondRate] = [] } = endData;
-      const { mid: startMid, effectiveDate: startDate } = firstRate;
-      const { mid: endMid, effectiveDate: endDate } = secondRate;
-      const stratResult = (amount * startMid * 100) / 100;
-      const displayStart = priceFormat(stratResult, 2);
-      const endResult = (amount * endMid * 100) / 100;
-      const displayEnd = priceFormat(endResult, 2);
-      const diffResult = endResult - stratResult;
+    if (startData && endData) {
+      const effectiveDate = startData.rates[0].effectiveDate;
+      const { total: firstTotal, ...firstResult } = displayFormattedResult(
+        startData,
+        amount,
+      );
+      const { total: secondTotal, ...secondResult } = displayFormattedResult(
+        endData,
+        amount,
+      );
+
+      const diffResult = firstTotal - secondTotal;
       const totalResult = priceFormat(diffResult, 2);
 
-      const pdfFileName = `roznice-${format(new Date(endDate), 'MM_yyyy')}`;
-      const invoiceNumber = `1/${format(new Date(endDate), 'MM/yyyy')}`;
-
-      // move formatted data to the NBPContext
-      const formattedStart: ICalcResultProps = {
-        amount,
-        course: priceFormat(startMid, 4),
-        result: displayStart,
-        date: format(new Date(startDate), 'dd.MM.yyyy'),
-        currency: code,
-      };
-
-      const formattedEnd: ICalcResultProps = {
-        amount,
-        course: priceFormat(endMid, 4),
-        result: displayEnd,
-        date: format(new Date(endDate), 'dd.MM.yyyy'),
-        currency: code,
-      };
+      const pdfFileName = `roznice-${format(
+        new Date(effectiveDate),
+        'MM_yyyy',
+      )}`;
+      const invoiceNumber = `1/${format(new Date(effectiveDate), 'MM/yyyy')}`;
 
       return (
         <>
           <Result
-            formattedStart={formattedStart}
-            formattedEnd={formattedEnd}
+            firstResult={firstResult}
+            secondResult={secondResult}
             diffResult={totalResult}
-            currency={currency}
+            currency={startData.currency}
           />
           <StyledPDFDownloadLink
             document={
               <ResultPdf
-                formattedStart={formattedStart}
-                formattedEnd={formattedEnd}
+                firstResult={firstResult}
+                secondResult={secondResult}
                 diffResult={totalResult}
-                currency={currency}
+                currency={startData.currency}
                 invoiceNumber={invoiceNumber}
               />
             }

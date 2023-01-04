@@ -7,8 +7,7 @@ import {
   View,
 } from '@react-pdf/renderer';
 import React from 'react';
-
-import { ICalcResultProps } from '../CalcResult';
+import { ResultProps } from '../Result';
 import { Table } from '../TablePdf';
 import Arial from './../../..//public/fonts/Arial.ttf';
 import ArialBold from './../../..//public/fonts/ArialBold.ttf';
@@ -72,20 +71,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export type ResultProps = {
-  formattedStart: ICalcResultProps;
-  formattedEnd: ICalcResultProps;
-  diffResult: string | undefined;
-  currency: string;
+export type ResultPropsPdf = ResultProps & {
   invoiceNumber: string;
 };
 
 const currenyExchange = 'PLN';
 
-export const ResultPdf: React.FC<ResultProps> = ({
-  formattedStart: { currency, ...firstResult } = {},
+export const ResultPdf: React.FC<ResultPropsPdf> = ({
+  firstResult: { currency, ...firstResult } = {},
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  formattedEnd: { currency: secondCurrency, ...secondResult } = {},
+  secondResult: { currency: secondCurrency, ...secondResult } = {},
   diffResult,
   invoiceNumber,
 }) => {
