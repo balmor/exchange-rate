@@ -63,8 +63,7 @@ export const CalcResult: React.FC = (): JSX.Element => {
         amount,
       );
 
-      const diffResult = firstTotal - secondTotal;
-      const totalResult = priceFormat(diffResult, 2);
+      const totalResult = priceFormat(secondTotal - firstTotal, 2);
 
       const pdfFileName = `roznice-${format(
         new Date(effectiveDate),
