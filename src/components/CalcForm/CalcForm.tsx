@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import plLocale from 'date-fns/locale/pl';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import CurrencyCode from './../../config/currencyCode.json';
+import currencyCodes from './../../config/currencyCode.json';
 import { useTheme } from 'styled-components';
 
 import {
@@ -106,16 +106,11 @@ export const CalcForm: React.FC = (): JSX.Element => {
               name='currency'
               control={control}
               rules={{ required: true }}
-              render={({
-                field,
-                field: { onChange, value },
-                fieldState: { error } = {},
-              }) => {
+              render={({ field: { onChange }, fieldState: { error } = {} }) => {
                 return (
                   <Autocomplete
-                    // value={[value]}
                     disablePortal
-                    options={CurrencyCode}
+                    options={currencyCodes}
                     sx={{ width: 120 }}
                     onChange={(_, data) => onChange(data)}
                     renderInput={params => (

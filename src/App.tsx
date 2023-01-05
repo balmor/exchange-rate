@@ -10,16 +10,16 @@ import FormProvider from './context/FormProvider';
 const queryClient = new QueryClient();
 
 const App: React.FC = (): JSX.Element => (
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider theme={darkMuiTheme}>
+  <ThemeProvider theme={darkMuiTheme}>
+    <QueryClientProvider client={queryClient}>
       <Typography component={'div'}>
         <FormProvider>
           <Header />
           <Section />
         </FormProvider>
       </Typography>
-    </ThemeProvider>
-  </QueryClientProvider>
+    </QueryClientProvider>
+  </ThemeProvider>
 );
 
 export default App;

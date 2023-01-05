@@ -1,10 +1,7 @@
-import {
-  createTheme as createMuiTheme,
-  // experimental_sx as sx,
-} from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import { DefaultTheme } from '../theme/dark';
 
-export const darkMuiTheme = createMuiTheme({
+export const darkMuiTheme = createTheme({
   typography: {
     fontSize: 22,
   },
@@ -19,13 +16,13 @@ export const darkMuiTheme = createMuiTheme({
     },
   },
   components: {
-    // MuiPaper: {
-    //   styleOverrides: {
-    //     root: sx({
-    //       background: DefaultTheme.primary,
-    //     }),
-    //   },
-    // },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          background: DefaultTheme.primary,
+        },
+      },
+    },
     MuiTextField: {
       styleOverrides: {
         root: {
