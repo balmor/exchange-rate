@@ -93,7 +93,7 @@ export const ResultPdf: React.FC<ResultPropsPdf> = ({
 
   return (
     <Document>
-      <Page size='A4' style={styles.page}>
+      <Page size="A4" style={styles.page}>
         <View style={styles.section}>
           <Text style={styles.header1}>Różnice kursowe</Text>
           <Text style={styles.invoice}>dla faktury nr {invoiceNumber}</Text>

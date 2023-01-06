@@ -82,7 +82,7 @@ export const CalcForm: React.FC = (): JSX.Element => {
         <FormGroup row sx={{ marginBottom: 10 }}>
           <FormControl sx={{ height: 60 }}>
             <Controller
-              name='amount'
+              name="amount"
               control={control}
               rules={{ required: true }}
               render={({ field, fieldState: { error } = {} }) => {
@@ -92,7 +92,7 @@ export const CalcForm: React.FC = (): JSX.Element => {
                     sx={{ width: 270 }}
                     {...field}
                     error={!!error}
-                    label='Kwota należnośc'
+                    label="Kwota należnośc"
                   />
                 );
               }}
@@ -103,7 +103,7 @@ export const CalcForm: React.FC = (): JSX.Element => {
           </FormControl>
           <FormControl sx={{ height: 60 }}>
             <Controller
-              name='currency'
+              name="currency"
               control={control}
               rules={{ required: true }}
               render={({ field: { onChange }, fieldState: { error } = {} }) => {
@@ -118,7 +118,7 @@ export const CalcForm: React.FC = (): JSX.Element => {
                         {...params}
                         error={!!error}
                         required
-                        label='Waluta'
+                        label="Waluta"
                       />
                     )}
                   />
@@ -138,8 +138,8 @@ export const CalcForm: React.FC = (): JSX.Element => {
             <FormControl sx={{ height: 60 }}>
               <DateCalcPicker
                 control={control}
-                name='dateStart'
-                label='Data przychodu należnego'
+                name="dateStart"
+                label="Data przychodu należnego"
               />
               {errors.dateStart?.type === 'required' && (
                 <ErrorMessage message={errorMessages.required} />
@@ -148,8 +148,8 @@ export const CalcForm: React.FC = (): JSX.Element => {
             <FormControl sx={{ height: 60 }}>
               <DateCalcPicker
                 control={control}
-                name='dateEnd'
-                label='Data otrzymania wpłaty'
+                name="dateEnd"
+                label="Data otrzymania wpłaty"
               />
               {errors.dateEnd?.type === 'required' && (
                 <ErrorMessage message={errorMessages.required} />
@@ -158,13 +158,13 @@ export const CalcForm: React.FC = (): JSX.Element => {
           </LocalizationProvider>
         </FormGroup>
         <FormGroup row sx={{ justifyContent: 'space-between' }}>
-          <Button type='button' onClick={handleReset}>
+          <Button type="button" onClick={handleReset}>
             Wyczyść
           </Button>
           <LoadingButton
             sx={{ width: 100, marginLeft: 12 }}
-            variant='contained'
-            type='submit'
+            variant="contained"
+            type="submit"
             loading={isInitialLoading}
             disabled={isInitialLoading}
           >

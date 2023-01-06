@@ -92,9 +92,9 @@ export const CalcResult: React.FC = (): JSX.Element => {
             fileName={`${pdfFileName}.pdf`}
           >
             <Button
-              variant='outlined'
-              color='secondary'
-              size='small'
+              variant="outlined"
+              color="secondary"
+              size="small"
               endIcon={<FileDownloadIcon />}
             >
               Pobierz dokument
