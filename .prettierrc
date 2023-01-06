@@ -6,7 +6,6 @@
   "bracketSpacing": true,
   "useTabs": false,
   "arrowParens": "avoid",
-  "jsxSingleQuote": true,
   "trailingComma": "all",
   "endOfLine": "auto"
 }

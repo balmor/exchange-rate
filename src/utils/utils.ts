@@ -4,6 +4,8 @@ import { isHoliday } from 'poland-public-holidays';
 import format from 'date-fns/format';
 import { ICalcResultProps } from '../components/CalcResult';
 
+export const githubRepoLink = 'https://github.com/balmor/exchange-rate';
+
 export const formatData = ({
   amount,
   currency = '',

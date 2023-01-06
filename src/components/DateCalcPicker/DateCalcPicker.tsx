@@ -2,11 +2,10 @@ import * as React from 'react';
 import { Controller, Control } from 'react-hook-form';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import TextField from '@mui/material/TextField';
-import { IFormInput } from '../CalcForm';
 
 type DateCalcPickerProps = {
-  control: Control<IFormInput>;
-  name: any; // to add proper type
+  control: Control;
+  name: string; // to add proper type
   label: string;
 };
 
