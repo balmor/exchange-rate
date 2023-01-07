@@ -1,7 +1,8 @@
 # Kalkulator różnic kursowych
+
 [![CI](https://github.com/balmor/exchange-rate/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/balmor/exchange-rate/actions/workflows/ci.yml)
 
-Aplikacja oblicza różnice kursowe na podstawie podanej waluty
+Aplikacja oblicza różnice kursowe na podstawie podanej waluty względem złotówki (PLN)
 
 ## Jak zacząć
 
@@ -25,7 +26,11 @@ yarn build
 
 ## Link
 
-https://balmor.github.io/exchange-rate/
+[Exchange Rate](https://balmor.github.io/exchange-rate/)
+
+## Podgląd
+
+[<img src="public/preview.png" width="500"/>](/public/preview.png)
 
 ## Do zrobienia
 
