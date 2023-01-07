@@ -1,4 +1,5 @@
 # Kalkulator różnic kursowych
+[![CI](https://github.com/balmor/exchange-rate/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/balmor/exchange-rate/actions/workflows/ci.yml)
 
 Aplikacja oblicza różnice kursowe na podstawie podanej waluty
 
