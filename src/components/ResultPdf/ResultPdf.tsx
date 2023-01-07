@@ -71,16 +71,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export type ResultPropsPdf = ResultProps & {
+type ResultPropsPdf = ResultProps & {
   invoiceNumber: string;
 };
 
 const currenyExchange = 'PLN';
 
 export const ResultPdf: React.FC<ResultPropsPdf> = ({
-  firstResult: { currency, ...firstResult } = {},
+  firstResult: { currency, ...firstResult },
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  secondResult: { currency: secondCurrency, ...secondResult } = {},
+  secondResult: { currency: secondCurrency, ...secondResult },
   diffResult,
   invoiceNumber,
 }) => {
@@ -98,9 +98,9 @@ export const ResultPdf: React.FC<ResultPropsPdf> = ({
           <Text style={styles.header1}>Różnice kursowe</Text>
           <Text style={styles.invoice}>dla faktury nr {invoiceNumber}</Text>
           <Text style={styles.header2}>Wartość w ewidencji przychodów</Text>
-          <Table data={[firstResult]} dataHeader={tableHeader} />
+          <Table data={[firstResult]} dataHeader={[tableHeader]} />
           <Text style={styles.header2}>Faktyczny wpływ</Text>
-          <Table data={[secondResult]} dataHeader={tableHeader} />
+          <Table data={[secondResult]} dataHeader={[tableHeader]} />
           <View style={styles.diffWraper}>
             <Text style={styles.diff1}>RÓŻNICA</Text>
             <Text style={styles.diff2}>{diffResult}</Text>

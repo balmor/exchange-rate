@@ -11,7 +11,7 @@ import { Notification } from '../Notification';
 import { Result } from '../Result';
 import { ResultPdf } from '../ResultPdf';
 import { FormContext } from '../../context/FormProvider';
-import { useNBPGet } from '../../hooks/useNBPGet';
+import { IExchangeTypes, useNBPGet } from '../../hooks/useNBPGet';
 
 const StyledPDFDownloadLink = styled(PDFDownloadLink)`
   text-decoration: none;
@@ -35,11 +35,14 @@ export const CalcResult: React.FC = (): JSX.Element => {
     formData,
     formData: { amount },
   } = useContext(FormContext);
+  // const fetchParams = {
+
+  // };
 
   const [
     { data: startData, isError: isErrorStart },
     { data: endData, isError: isErrorEnd },
-  ] = useNBPGet(formData);
+  ] = useNBPGet(formData as IExchangeTypes);
 
   if ((!startData || !endData) && !isErrorStart && !isErrorEnd) {
     return <></>;

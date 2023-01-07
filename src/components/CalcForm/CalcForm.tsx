@@ -21,7 +21,7 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { DateCalcPicker } from '../DateCalcPicker';
 import { ErrorMessage } from '../ErrorMessage';
 import { formatData } from '../../utils';
-import { useNBPGet } from '../../hooks/useNBPGet';
+import { IExchangeTypes, useNBPGet } from '../../hooks/useNBPGet';
 import { FormContext } from '../../context/FormProvider';
 
 export type IFormInput = {
@@ -55,10 +55,12 @@ export const CalcForm: React.FC = (): JSX.Element => {
   const themeContext = useTheme();
   const { formData, setFormData } = useContext(FormContext);
 
+  // console.log('--> formData', formData);
+
   const [
     { isInitialLoading: isLoadingStart },
     { isInitialLoading = isLoadingStart },
-  ] = useNBPGet(formData);
+  ] = useNBPGet(formData as IExchangeTypes);
 
   const onSubmit: SubmitHandler<IFormInput> = data => {
     const formattedData = formatData(data);
@@ -113,6 +115,9 @@ export const CalcForm: React.FC = (): JSX.Element => {
                     options={currencyCodes}
                     sx={{ width: 120 }}
                     onChange={(_, data) => onChange(data)}
+                    ListboxProps={{
+                      style: { maxHeight: 200, marginBottom: 7 },
+                    }}
                     renderInput={params => (
                       <TextField
                         {...params}

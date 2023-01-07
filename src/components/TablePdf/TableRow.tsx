@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
+import { ITableData } from '.';
 
 const styles = StyleSheet.create({
   row: {
@@ -17,15 +18,17 @@ const styles = StyleSheet.create({
   },
 });
 
-export type ITableRowForm = {
-  data?: any;
-  rowOff?: any;
+type IRowOff = {
+  rowOff?: boolean;
 };
 
-export type ITableCellForm = {
-  item?: any;
-  cells?: any;
-  rowOff?: any;
+type ITableRowForm = IRowOff & {
+  data: ITableData[];
+};
+
+type ITableCellForm = IRowOff & {
+  item: ITableData;
+  cells: string[];
 };
 
 export const TableRow: React.FC<ITableRowForm> = ({ data, rowOff = false }) => {

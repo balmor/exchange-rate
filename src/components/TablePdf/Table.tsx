@@ -11,14 +11,18 @@ const styles = StyleSheet.create({
   },
 });
 
-export type ITableForm = {
-  data?: any;
-  dataHeader?: any;
+export type ITableData = {
+  [key: string]: string;
 };
 
-export const Table: React.FC<ITableForm> = ({ data, dataHeader = {} }) => (
+type ITableForm = {
+  data: ITableData[];
+  dataHeader: ITableData[];
+};
+
+export const Table: React.FC<ITableForm> = ({ data, dataHeader }) => (
   <View style={styles.tableContainer}>
-    <TableRow data={[dataHeader]} rowOff />
+    <TableRow data={dataHeader} rowOff />
     <TableRow data={data} />
   </View>
 );
