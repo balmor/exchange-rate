@@ -4,5 +4,6 @@ export const palette = {
   darkFront: '#1a2635',
   yellow: '#fdd835',
   lightGrey: '#aaaaaa',
+  orange: '#ffa726',
   black: '#000000',
 };
