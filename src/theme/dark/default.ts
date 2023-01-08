@@ -5,8 +5,7 @@ export const DefaultTheme: StyledTheme = {
   primary: palette.dark,
   primaryDarken: palette.darkFront,
   secondary: palette.yellow,
-  secondaryDarken: palette.orange,
-  third: palette.lightGray,
+  third: palette.lightGrey,
   textPrimary: palette.white,
   textSecondary: palette.black,
 };

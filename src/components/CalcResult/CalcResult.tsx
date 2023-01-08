@@ -35,9 +35,6 @@ export const CalcResult: React.FC = (): JSX.Element => {
     formData,
     formData: { amount },
   } = useContext(FormContext);
-  // const fetchParams = {
-
-  // };
 
   const [
     { data: startData, isError: isErrorStart },

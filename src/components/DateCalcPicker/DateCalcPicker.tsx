@@ -5,14 +5,16 @@ import TextField from '@mui/material/TextField';
 
 type DateCalcPickerProps = {
   control: Control;
-  name: string; // to add proper type
+  name: string;
   label: string;
+  smallScreen: boolean;
 };
 
 export const DateCalcPicker: React.FC<DateCalcPickerProps> = ({
   control,
   name,
   label,
+  smallScreen,
 }): JSX.Element => {
   return (
     <Controller
@@ -29,7 +31,11 @@ export const DateCalcPicker: React.FC<DateCalcPickerProps> = ({
           value={value}
           disableFuture
           renderInput={params => (
-            <TextField sx={{ width: 270 }} {...params} error={!!error} />
+            <TextField
+              sx={{ width: smallScreen ? 250 : 270 }}
+              {...params}
+              error={!!error}
+            />
           )}
         />
       )}

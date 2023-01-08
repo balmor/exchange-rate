@@ -4,6 +4,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import currencyCodes from './../../config/currencyCode.json';
 import { useTheme } from 'styled-components';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import {
   darken,
@@ -38,6 +39,8 @@ const errorMessages: IFormInput = {
 };
 
 export const CalcForm: React.FC = (): JSX.Element => {
+  const mediumScreen = useMediaQuery('(max-width: 45rem)');
+  const smallScreen = useMediaQuery('(max-width: 25rem)');
   const {
     control,
     handleSubmit,
@@ -54,8 +57,6 @@ export const CalcForm: React.FC = (): JSX.Element => {
   });
   const themeContext = useTheme();
   const { formData, setFormData } = useContext(FormContext);
-
-  // console.log('--> formData', formData);
 
   const [
     { isInitialLoading: isLoadingStart },
@@ -81,8 +82,8 @@ export const CalcForm: React.FC = (): JSX.Element => {
       }}
     >
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <FormGroup row sx={{ marginBottom: 10 }}>
-          <FormControl sx={{ height: 60 }}>
+        <FormGroup row sx={{ marginBottom: mediumScreen ? 0 : 10 }}>
+          <FormControl sx={{ height: 60, marginBottom: mediumScreen ? 5 : 0 }}>
             <Controller
               name="amount"
               control={control}
@@ -91,7 +92,7 @@ export const CalcForm: React.FC = (): JSX.Element => {
                 return (
                   <TextField
                     required
-                    sx={{ width: 270 }}
+                    sx={{ width: smallScreen ? 250 : 270 }}
                     {...field}
                     error={!!error}
                     label="Kwota należnośc"
@@ -103,7 +104,7 @@ export const CalcForm: React.FC = (): JSX.Element => {
               <ErrorMessage message={errorMessages.required} />
             )}
           </FormControl>
-          <FormControl sx={{ height: 60 }}>
+          <FormControl sx={{ height: 60, marginBottom: mediumScreen ? 5 : 0 }}>
             <Controller
               name="currency"
               control={control}
@@ -135,26 +136,32 @@ export const CalcForm: React.FC = (): JSX.Element => {
             )}
           </FormControl>
         </FormGroup>
-        <FormGroup row sx={{ marginBottom: 10 }}>
+        <FormGroup row sx={{ marginBottom: mediumScreen ? 0 : 10 }}>
           <LocalizationProvider
             dateAdapter={AdapterDateFns}
             adapterLocale={plLocale}
           >
-            <FormControl sx={{ height: 60 }}>
+            <FormControl
+              sx={{ height: 60, marginBottom: mediumScreen ? 5 : 0 }}
+            >
               <DateCalcPicker
                 control={control}
                 name="dateStart"
                 label="Data przychodu należnego"
+                smallScreen={smallScreen}
               />
               {errors.dateStart?.type === 'required' && (
                 <ErrorMessage message={errorMessages.required} />
               )}
             </FormControl>
-            <FormControl sx={{ height: 60 }}>
+            <FormControl
+              sx={{ height: 60, marginBottom: mediumScreen ? 5 : 0 }}
+            >
               <DateCalcPicker
                 control={control}
                 name="dateEnd"
                 label="Data otrzymania wpłaty"
+                smallScreen={smallScreen}
               />
               {errors.dateEnd?.type === 'required' && (
                 <ErrorMessage message={errorMessages.required} />

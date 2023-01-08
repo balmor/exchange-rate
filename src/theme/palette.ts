@@ -1,9 +1,8 @@
 export const palette = {
   white: '#ffffff',
   dark: '#182331',
-  darkFront: '#1A2635',
-  lightGray: '#424242',
+  darkFront: '#1a2635',
   yellow: '#fdd835',
-  orange: '#ffa726',
+  lightGrey: '#aaaaaa',
   black: '#000000',
 };

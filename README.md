@@ -40,5 +40,5 @@ yarn build
 - [x] możliwość pobrania wyniku jako dokument pdf
 - [x] aktualizacja react-query v4 (https://tanstack.com/query/v4)
 - [x] usuniecie useEffect oraz przeniesienie formatted data
-- [ ] dodanie responsywnego trybu dla tabletów i smartfonów
+- [x] dodanie responsywnego trybu dla tabletów i smartfonów
 - [ ] sprawdzić https://pspdfkit.com/blog/2022/how-to-convert-html-to-pdf-using-react/

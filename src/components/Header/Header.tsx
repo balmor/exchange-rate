@@ -12,6 +12,10 @@ const StyledHeader = styled('header')`
   text-align: center;
   background-color: ${({ theme }) => theme.secondary};
   height: 8rem;
+
+  @media (max-width: 45rem) {
+    line-height: 3rem;
+  }
 `;
 
 const StyledTitle = styled('h1')`
