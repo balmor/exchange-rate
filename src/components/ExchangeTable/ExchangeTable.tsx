@@ -6,6 +6,10 @@ const StyledTable = styled('div')`
   border-spacing: 0;
   display: table;
   font-weight: bold;
+
+  @media (max-width: 25rem) {
+    font-size: 1.2rem;
+  }
 `;
 
 const StyledCell = styled('div')``;
