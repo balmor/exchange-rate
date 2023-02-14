@@ -1,22 +1,6 @@
 import React, { Fragment } from 'react';
-import { Text, View, StyleSheet } from '@react-pdf/renderer';
-import { ITableData } from '.';
-
-const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    border: '1px solid black',
-    textAlign: 'right',
-    margin: '0',
-  },
-  tableCell: {
-    flexDirection: 'column',
-    width: '27%',
-    borderRight: '1px solid black',
-    padding: '2pt 5pt',
-    margin: '0',
-  },
-});
+import { Text, View } from '@react-pdf/renderer';
+import { ITableData, TableStyle } from '.';
 
 type IRowOff = {
   rowOff?: boolean;
@@ -39,7 +23,7 @@ export const TableRow: React.FC<ITableRowForm> = ({ data, rowOff = false }) => {
           return (
             <Text
               style={[
-                styles.tableCell,
+                TableStyle.tableCell,
                 index === 1 && { width: '22%' },
                 index === 2 && !rowOff ? { fontWeight: 700 } : {},
                 index === 3 && { borderRight: 'none', width: '24%' },
@@ -59,7 +43,7 @@ export const TableRow: React.FC<ITableRowForm> = ({ data, rowOff = false }) => {
     return (
       <View
         style={[
-          styles.row,
+          TableStyle.row,
           rowOff && {
             borderBottom: 'none',
             textAlign: 'left',

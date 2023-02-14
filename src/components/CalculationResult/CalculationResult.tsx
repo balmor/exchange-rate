@@ -1,11 +1,6 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import { ParagraphResult } from '.';
 import { ICalcResultProps } from '../CalcResult';
-
-const ParagraphResult = styled('p')`
-  font-size: 1.4rem;
-  color: #3e6da8;
-`;
 
 export const CalculationResult: React.FC<ICalcResultProps> = ({
   amount,

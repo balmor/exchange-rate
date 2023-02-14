@@ -1,10 +1,9 @@
 import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
 import { darken } from '@mui/material/styles';
-import { PDFDownloadLink } from '@react-pdf/renderer';
 import format from 'date-fns/format';
 import React, { useContext } from 'react';
-import styled, { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { displayFormattedResult, priceFormat } from '../../utils';
 import { Notification } from '../Notification';
@@ -12,13 +11,7 @@ import { Result } from '../Result';
 import { ResultPdf } from '../ResultPdf';
 import { FormContext } from '../../context/FormProvider';
 import { IExchangeTypes, useNBPGet } from '../../hooks/useNBPGet';
-
-const StyledPDFDownloadLink = styled(PDFDownloadLink)`
-  text-decoration: none;
-  margin: 0 auto;
-  width: 190px;
-  display: block;
-`;
+import { StyledPDFDownloadLink } from '.';
 
 export type ICalcResultProps = {
   amount: string;
