@@ -1,13 +1,13 @@
 import React from 'react';
+import { MainContainer } from '.';
 import { CalcForm } from '../CalcForm';
 import { CalcResult } from '../CalcResult';
-import { StyledContainer } from '../StyledContainer';
 
 export const Section: React.FC = (): JSX.Element => (
-  <StyledContainer>
+  <MainContainer>
     <section>
       <CalcForm />
       <CalcResult />
     </section>
-  </StyledContainer>
+  </MainContainer>
 );

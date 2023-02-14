@@ -32,6 +32,7 @@ const omitPublicHolidays = (date: number | Date) =>
 
 export const priceFormat = (value: number, digit: number) =>
   new Intl.NumberFormat('pl-PL', {
+    minimumFractionDigits: digit,
     maximumFractionDigits: digit,
   }).format(value);
 
