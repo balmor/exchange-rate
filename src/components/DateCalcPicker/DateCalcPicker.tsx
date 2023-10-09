@@ -29,6 +29,7 @@ export const DateCalcPicker: React.FC<DateCalcPickerProps> = ({
           label={label}
           onChange={onChange}
           value={value}
+          showDaysOutsideCurrentMonth
           disableFuture
           renderInput={params => (
             <TextField
