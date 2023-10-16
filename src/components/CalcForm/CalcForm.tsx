@@ -177,6 +177,7 @@ export const CalcForm: React.FC = (): JSX.Element => {
             sx={{ width: 100, marginLeft: 12 }}
             variant="contained"
             type="submit"
+            aria-busy
             loading={isInitialLoading}
             disabled={isInitialLoading}
           >

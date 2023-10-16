@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+import type {} from '@mui/x-date-pickers/themeAugmentation';
 import { DefaultTheme } from '../theme/dark';
 
 export const darkMuiTheme = createTheme({
@@ -27,6 +28,22 @@ export const darkMuiTheme = createTheme({
       styleOverrides: {
         root: {
           marginRight: 40,
+        },
+      },
+    },
+    MuiDayPicker: {
+      styleOverrides: {
+        header: {
+          backgroundColor: DefaultTheme.primaryDarken,
+        },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          '&.MuiDayPicker-weekDayLabel': {
+            color: 'lightslategrey',
+          },
         },
       },
     },
